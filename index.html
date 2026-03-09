@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2566">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ms"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;X-Plorace: Edisi Sejarah Alam Melayu&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #eef2f3; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#game-box { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 500px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1 { color: #2c3e50; font-size: 24px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.term-display { font-size: 32px; font-weight: bold; color: #e74c3c; margin: 20px 0; min-height: 40px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hint-text { color: #7f8c8d; font-style: italic; margin-bottom: 30px; line-height: 1.6; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.stats { font-size: 14px; color: #34495e; margin-bottom: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button { padding: 15px 25px; font-size: 16px; border: none; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: bold; width: 45%; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-correct { background: #27ae60; color: white; margin-right: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-pass { background: #95a5a6; color: white; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button:hover { opacity: 0.8; transform: translateY(-2px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#final-screen { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="game-box"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="play-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Kembara A.R.A.I. &lt;br&gt;&lt;small&gt;X-Plorace Edition&lt;/small&gt;&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stats"&gt;Soalan: &lt;span id="q-count"&gt;1&lt;/span&gt;/35 | Skor: &lt;span id="score"&gt;0&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="term-display" id="term"&gt;SEDIA?&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="hint-text" id="hint"&gt;Klik 'MULA' untuk mencabar pengetahuan Sejarah anda!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="controls"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="startGame()" style="width: 100%; background: #3498db; color: white;"&gt;MULA PERMAINAN&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="final-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Tamat Perjalanan!&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p style="font-size: 48px;"&gt;🏆&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p id="final-score" style="font-size: 20px; font-weight: bold;"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="location.reload()" style="width: 100%; background: #3498db; color: white;"&gt;MAIN SEMULA&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const questions = [</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Sanskrit", h: "Bahasa utama dalam batu bersurat awal kerajaan Funan."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Palava", h: "Tulisan dari India, digunakan di Champa dan Srivijaya."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Kawi", h: "Sistem tulisan yang digunakan oleh kerajaan Majapahit."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Pegon", h: "Tulisan Arab untuk menulis bahasa Jawa."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Jawi", h: "Tulisan yang berkembang seiring penyebaran Islam."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Batu Bersurat", h: "Bukti fizikal terpenting sistem tulisan purba."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Khmer", h: "Bahasa selain Sanskrit di kerajaan Angkor."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Champa Kuno", h: "Tulisan asal masyarakat kerajaan Champa."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Inskripsi", h: "Tulisan yang dipahat pada batu atau dinding candi."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Tradisi Lisan", h: "Penyampaian sejarah melalui mulut ke telinga."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Hikayat", h: "Karya sastera zaman Islam seperti Hikayat Seri Rama."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Nagarakertagama", h: "Kitab sejarah Majapahit yang sangat termasyhur."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Ramayana", h: "Epik India yang disadur ke budaya tempatan."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Manuskrip", h: "Naskhah lama yang ditulis menggunakan tangan."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Karang Brahi", h: "Batu bersurat Srivijaya tentang ketaatan rakyat."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Akayet Inra Patra", h: "Karya sastera yang terkenal di Champa."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Syair", h: "Puisi lama pengaruh Islam di Alam Melayu."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Saduran", h: "Cerita yang diolah semula daripada sumber asal."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Prapanca", h: "Tokoh yang mengarang kitab Nagarakertagama."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Candi", h: "Rumah ibadat dan pusat komuniti Alam Melayu."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Baray", h: "Sistem pengairan (kolam) gergasi di Angkor."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Angkor Wat", h: "Seni bina agung Raja Suryavarman II."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Gapura", h: "Pintu gerbang ikonik dalam seni bina Majapahit."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Kapal", h: "Bukti kemahiran seni bina laut kerajaan Srivijaya."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Lembah Bujang", h: "Tapak arkeologi candi di Kedah Tua."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Arca", h: "Patung dewa atau figura agama di candi."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Oc Eo", h: "Pusat seni bina purba di kerajaan Funan."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Candi Tikus", h: "Peninggalan unik seni bina di Jawa Timur."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Borobudur", h: "Candi Buddha paling besar, terletak di Jawa."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Pemerintah", h: "Golongan atasan (Raja dan Bangsawan)."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Rakyat Merdeka", h: "Golongan petani, pedagang, dan tukang."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Hamba", h: "Golongan paling bawah dalam hierarki sosial."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Bangsawan", h: "Individu yang membantu pentadbiran raja."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Pujangga", h: "Cendekiawan istana yang menulis sejarah."},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{t: "Raja", h: "Ketua tertinggi dalam struktur sosial Alam Melayu."}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let currentIdx = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let score = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function startGame() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>questions.sort(() =&gt; Math.random() - 0.5);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showQuestion() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (currentIdx &lt; questions.length) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('q-count').innerText = currentIdx + 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('term').innerText = questions[currentIdx].t;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('hint').innerText = questions[currentIdx].h;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('controls').innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="handleResponse(true)" class="btn-correct"&gt;JAWAB&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="handleResponse(false)" class="btn-pass"&gt;LANGKAU&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>endGame();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function handleResponse(isCorrect) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (isCorrect) score++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('score').innerText = score;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>currentIdx++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function endGame() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('play-screen').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('final-screen').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('final-score').innerText = "Skor Anda: " + score + " / 35";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
